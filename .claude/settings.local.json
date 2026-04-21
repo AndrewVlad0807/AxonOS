@@ -1,0 +1,6 @@
+{
+  "disabledMcpjsonServers": [
+    "openspace",
+    "code-memory"
+  ]
+}

@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <!-- Background -->
+    <radialGradient id="bg" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#1e1e2e"/>
+      <stop offset="100%" stop-color="#11111b"/>
+    </radialGradient>
+
+    <!-- Outer glow bloom -->
+    <filter id="bloomOuter" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="18" result="blur1"/>
+      <feColorMatrix in="blur1" type="matrix"
+        values="0 0.5 1 0 0   0 0.3 0.9 0 0.02   0 0 0.8 0 0.1   0 0 0 1 0" result="colored"/>
+      <feMerge><feMergeNode in="colored"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- Glass body fill -->
+    <linearGradient id="glassFill" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#313244" stop-opacity="0.85"/>
+      <stop offset="35%" stop-color="#252535" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#181825" stop-opacity="0.6"/>
+    </linearGradient>
+
+    <!-- Blue edge gradient -->
+    <linearGradient id="blueEdge" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#89b4fa" stop-opacity="1"/>
+      <stop offset="70%" stop-color="#74c7ec" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#89dceb" stop-opacity="0.5"/>
+    </linearGradient>
+
+    <!-- Mauve gradient -->
+    <linearGradient id="mauveEdge" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#cba6f7" stop-opacity="0.9"/>
+      <stop offset="60%" stop-color="#b4befe" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#cba6f7" stop-opacity="0.4"/>
+    </linearGradient>
+
+    <!-- Shimmer -->
+    <linearGradient id="shimmer" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.08"/>
+      <stop offset="40%" stop-color="#89b4fa" stop-opacity="0.05"/>
+      <stop offset="70%" stop-color="#cba6f7" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.02"/>
+    </linearGradient>
+
+    <!-- Cutout inner glow -->
+    <radialGradient id="cutoutGlow" cx="50%" cy="70%" r="60%">
+      <stop offset="0%" stop-color="#11111b" stop-opacity="1"/>
+      <stop offset="85%" stop-color="#181825" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#1e1e2e" stop-opacity="1"/>
+    </radialGradient>
+
+    <!-- Base gradient -->
+    <linearGradient id="baseGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#cba6f7" stop-opacity="0.6"/>
+      <stop offset="50%" stop-color="#89b4fa" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#cba6f7" stop-opacity="0.6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- BACKGROUND -->
+  <rect width="512" height="512" rx="88" ry="88" fill="url(#bg)"/>
+
+  <!-- Subtle atmosphere -->
+  <ellipse cx="256" cy="300" rx="180" ry="120" fill="#89b4fa" fill-opacity="0.03"/>
+  <ellipse cx="256" cy="280" rx="100" ry="80" fill="#cba6f7" fill-opacity="0.04"/>
+
+  <!-- BLOOM LAYER -->
+  <path d="M256 68 L432 430 Q434 442 422 444 H90 Q78 444 80 430 Z"
+    fill="#89b4fa" fill-opacity="0.06"
+    filter="url(#bloomOuter)"/>
+
+  <!-- GLASS BODY -->
+  <path d="M256 68 L432 430 Q434 442 422 444 H90 Q78 444 80 430 Z"
+    fill="url(#glassFill)"/>
+  <path d="M256 68 L432 430 Q434 442 422 444 H90 Q78 444 80 430 Z"
+    fill="url(#shimmer)"/>
+
+  <!-- OUTER EDGES -->
+  <!-- Right edge — Blue -->
+  <line x1="256" y1="68" x2="432" y2="430" stroke="url(#blueEdge)" stroke-width="2.5"/>
+  <line x1="256" y1="68" x2="432" y2="430" stroke="#89b4fa" stroke-width="1.2"/>
+
+  <!-- Left edge — Mauve -->
+  <line x1="256" y1="68" x2="80" y2="430" stroke="url(#mauveEdge)" stroke-width="2.5"/>
+  <line x1="256" y1="68" x2="80" y2="430" stroke="#cba6f7" stroke-width="1"/>
+
+  <!-- Base -->
+  <line x1="80" y1="430" x2="432" y2="430" stroke="url(#baseGlow)" stroke-width="2"/>
+  <line x1="80" y1="430" x2="432" y2="430" stroke="#89b4fa" stroke-width="0.8" stroke-opacity="0.9"/>
+
+  <!-- INNER CUTOUT -->
+  <path d="M256 170 L376 410 H136 Z" fill="url(#cutoutGlow)"/>
+  <line x1="256" y1="170" x2="376" y2="410" stroke="#89b4fa" stroke-width="1.5" stroke-opacity="0.7"/>
+  <line x1="256" y1="170" x2="136" y2="410" stroke="#cba6f7" stroke-width="1.5" stroke-opacity="0.6"/>
+  <line x1="136" y1="410" x2="376" y2="410" stroke="#89b4fa" stroke-width="1" stroke-opacity="0.4"/>
+
+  <!-- Second bezel -->
+  <path d="M256 170 L376 410 H136 Z" fill="none" stroke="#89b4fa" stroke-width="0.5" stroke-opacity="0.15"/>
+
+  <!-- APEX -->
+  <circle cx="256" cy="68" r="22" fill="#89b4fa" fill-opacity="0.2"/>
+  <circle cx="256" cy="68" r="12" fill="none" stroke="#89b4fa" stroke-width="1" stroke-opacity="0.4"/>
+  <circle cx="256" cy="68" r="7" fill="none" stroke="#89b4fa" stroke-width="1.5" stroke-opacity="0.7"/>
+  <circle cx="256" cy="68" r="3.5" fill="#89b4fa"/>
+
+  <!-- CORNER DOTS -->
+  <circle cx="80" cy="430" r="3" fill="#cba6f7" opacity="0.9"/>
+  <circle cx="432" cy="430" r="3" fill="#89b4fa" opacity="0.9"/>
+
+  <!-- REFRACTION LINES -->
+  <line x1="190" y1="220" x2="310" y2="175" stroke="#ffffff" stroke-width="0.8" stroke-opacity="0.06"/>
+  <line x1="175" y1="310" x2="330" y2="250" stroke="#89b4fa" stroke-width="0.5" stroke-opacity="0.04"/>
+</svg>

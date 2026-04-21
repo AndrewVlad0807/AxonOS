@@ -1,0 +1,287 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════════════════════
+   AXON OS — TASTE SKILL ENHANCED DESIGN SYSTEM
+   Variance: 8 | Motion: 6 | Density: 4
+   ═══════════════════════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; cursor: none !important; }
+
+html, body, #root {
+  width: 100%; height: 100%;
+  overflow: hidden;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   THEME VARIABLES — Dark Mode (Catppuccin Mocha)
+   ═══════════════════════════════════════════════════════════════ */
+:root,
+:root[data-theme="dark"] {
+  /* Background colors — Catppuccin Mocha */
+  --bg-primary:   #1e1e2e;   /* Base */
+  --bg-surface:   #181825;   /* Mantle */
+  --bg-elevated:  #11111b;   /* Crust */
+  
+  /* Text colors */
+  --text-primary:   #cdd6f4;   /* Text */
+  --text-secondary: #bac2de;   /* Subtext1 */
+  --text-muted:     #a6adc8;   /* Subtext0 */
+  
+  /* Borders */
+  --border:    rgba(205,214,244,0.06);
+  --border-strong: rgba(205,214,244,0.12);
+  
+  /* Shadows */
+  --shadow-soft:  0 8px 32px rgba(0,0,0,0.4);
+  --shadow-glass: 0 40px 100px rgba(0,0,0,0.6), 0 0 0 1px rgba(205,214,244,0.04);
+  --shadow-card:  0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(205,214,244,0.03);
+  
+  /* Glass */
+  --win-bg:     rgba(30,30,46,0.88);
+  --blur:       28px;
+  --blur-saturation: 180%;
+  
+  /* Scanlines */
+  --scanline-opacity: 1;
+  --scanline-color: rgba(0,0,0,0.08);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   THEME VARIABLES — Light Mode (Catppuccin Latte)
+   ═══════════════════════════════════════════════════════════════ */
+:root[data-theme="light"] {
+  /* Background colors — Catppuccin Latte */
+  --bg-primary:   #eff1f5;   /* Base */
+  --bg-surface:   #e6e9ef;   /* Mantle */
+  --bg-elevated:  #dce0e8;   /* Crust */
+  
+  /* Text colors */
+  --text-primary:   #4c4f69;   /* Text */
+  --text-secondary: #5c5f77;   /* Subtext1 */
+  --text-muted:     #6c6f85;   /* Subtext0 */
+  
+  /* Borders */
+  --border:    rgba(76,79,105,0.12);
+  --border-strong: rgba(76,79,105,0.2);
+  
+  /* Shadows */
+  --shadow-soft:  0 4px 24px rgba(76,79,105,0.08);
+  --shadow-glass: 0 20px 60px rgba(76,79,105,0.1), 0 0 0 1px rgba(76,79,105,0.05);
+  --shadow-card:  0 8px 40px rgba(76,79,105,0.08), 0 0 0 1px rgba(76,79,105,0.04);
+  
+  /* Glass */
+  --win-bg:     rgba(239,241,245,0.85);
+  --blur:       24px;
+  --blur-saturation: 140%;
+  
+  /* Scanlines — Hidden in light mode */
+  --scanline-opacity: 0;
+  --scanline-color: rgba(76,79,105,0.02);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Accent Colors — Catppuccin (shared between themes)
+   ═══════════════════════════════════════════════════════════════ */
+:root {
+  /* Primary accents — Blue for main, Mauve for secondary */
+  --c-blue:      #89b4fa;   /* Blue - Primary action, links */
+  --c-mauve:     #cba6f7;   /* Mauve - Secondary accent */
+  --c-pink:      #f5c2e7;   /* Pink - Tertiary accent */
+  --c-rosewater: #f2cdcd;   /* Rosewater - Warm accent */
+  --c-peach:     #fab387;   /* Peach - Warning/attention */
+  
+  /* Semantic colors */
+  --c-green:     #a6e3a1;   /* Green - Success */
+  --c-red:       #f38ba8;   /* Red - Error/danger */
+  --c-teal:      #94e2d5;   /* Teal - Info */
+  --c-yellow:    #f9e2af;   /* Yellow - Warning */
+  --c-sapphire:  #74c7ec;   /* Sapphire - Links/info */
+  --c-lavender:  #b4befe;   /* Lavender - Highlight */
+  --c-sky:       #89dceb;   /* Sky */
+  
+  /* Legacy accent aliases for compatibility */
+  --c-cyan:      #89b4fa;
+  --c-violet:    #cba6f7;
+  --c-amber:     #f9e2af;
+  --c-rose:      #f38ba8;
+  --c-mint:      #a6e3a1;
+  
+  /* Motion — Spring Physics */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring:   cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   BASE STYLES — Use CSS variables
+   ═══════════════════════════════════════════════════════════════ */
+html, body, #root {
+  background: transparent;
+  color: var(--text-primary);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   THEME-AWARE TEXT CLASSES
+   ═══════════════════════════════════════════════════════════════ */
+.text-theme { color: var(--text-primary); }
+.text-theme-secondary { color: var(--text-secondary); }
+.text-theme-muted { color: var(--text-muted); }
+
+/* Theme-aware backgrounds */
+.bg-theme { background-color: var(--bg-primary); }
+.bg-theme-surface { background-color: var(--bg-surface); }
+.bg-theme-elevated { background-color: var(--bg-elevated); }
+
+/* Theme-aware borders */
+.border-theme { border-color: var(--border); }
+.border-theme-strong { border-color: var(--border-strong); }
+
+/* Theme-aware shadows */
+.shadow-theme { box-shadow: var(--shadow-glass); }
+
+/* ═══════════════════════════════════════════════════════════════
+   SCROLLBAR — Theme-aware
+   ═══════════════════════════════════════════════════════════════ */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { 
+  background: var(--border-strong);
+  border-radius: 99px; 
+}
+::-webkit-scrollbar-thumb:hover { background: var(--border-strong); }
+
+/* ═══════════════════════════════════════════════════════════════
+   GLASS PANEL — Double-Bezel (Doppelrand) Architecture
+   ═══════════════════════════════════════════════════════════════ */
+.glass {
+  background: var(--win-bg);
+  backdrop-filter: blur(var(--blur)) saturate(var(--blur-saturation));
+  -webkit-backdrop-filter: blur(var(--blur)) saturate(var(--blur-saturation));
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-glass), 
+              inset 0 1px 0 rgba(255,255,255,0.08),
+              inset 0 -1px 0 rgba(0,0,0,0.2);
+}
+
+/* Premium card with inner refraction */
+.glass-card {
+  background: linear-gradient(135deg, var(--bg-elevated), var(--bg-surface));
+  backdrop-filter: blur(32px);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: var(--shadow-card),
+              inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SCANLINE OVERLAY — Hidden in light mode
+   ═══════════════════════════════════════════════════════════════ */
+.scanlines::before {
+  content:"";
+  pointer-events:none;
+  position:fixed; inset:0; z-index:9999;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 3px,
+    var(--scanline-color) 3px,
+    var(--scanline-color) 4px
+  );
+  mix-blend-mode: overlay;
+  opacity: var(--scanline-opacity);
+  transition: opacity 0.3s ease;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   AMBIENT GLOW — Premium light bleeding effects
+   ═══════════════════════════════════════════════════════════════ */
+.ambient-blue {
+  box-shadow: 
+    0 0 60px rgba(137,180,250,0.12),
+    0 0 120px rgba(137,180,250,0.06),
+    inset 0 0 60px rgba(137,180,250,0.03);
+}
+
+.ambient-mauve {
+  box-shadow: 
+    0 0 60px rgba(203,166,247,0.12),
+    0 0 120px rgba(203,166,247,0.06);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   TYPOGRAPHY — Display hierarchy
+   ═══════════════════════════════════════════════════════════════ */
+.text-display {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.text-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   BUTTON — Tactile, premium
+   ═══════════════════════════════════════════════════════════════ */
+.btn-primary {
+  background: linear-gradient(135deg, var(--c-blue), #6db3f5);
+  color: var(--bg-primary);
+  font-weight: 600;
+  border-radius: 12px;
+  box-shadow: 
+    0 4px 20px rgba(137,180,250,0.25),
+    inset 0 1px 0 rgba(255,255,255,0.2);
+  transition: all 0.3s var(--ease-spring);
+}
+.btn-primary:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 30px rgba(137,180,250,0.35);
+}
+.btn-primary:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SELECTION — Tasteful highlight
+   ═══════════════════════════════════════════════════════════════ */
+::selection { 
+  background: rgba(137,180,250,0.2); 
+  color: var(--text-primary);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   GRAIN TEXTURE — Fixed overlay for premium feel
+   ═══════════════════════════════════════════════════════════════ */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   THEME TRANSITION — Smooth color changes
+   ═══════════════════════════════════════════════════════════════ */
+.theme-transition,
+.theme-transition * {
+  transition: 
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    color 0.3s ease !important;
+}

@@ -1,0 +1,13 @@
+lmstudio: https://lmstudio.ai/
+ollama: https://ollama.com/ 
+GLM 5.1 : z.ai
+google gemini: https://gemini.google.com/app
+google gemma: https://deepmind.google/models/gemma/gemma-4/
+deepseek: https://www.deepseek.com/en/
+minimax: https://www.minimax.io/
+runway video: https://runwayml.com/
+Gooogle stitch : https://stitch.withgoogle.com/
+claude code: https://claude.com/product/claude-code
+claude:https://claude.com/
+gemini cli: https://geminicli.com/
+llm arena: https://arena.ai/
